@@ -1,3 +1,5 @@
+# core\settings.py
+
 """
 Django settings for core project.
 
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y^ux9$h@_2++p^8rh9#6p3iu=1g7i&6nd3)*q^m7n4!=k1qlet'
+SECRET_KEY = 'django-insecure-(=z4%mt=rc)0r_lsl*2@1wr8k9zb7^)ya2fdh%n7$2uxsx=%+q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -104,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 
@@ -119,6 +121,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Variáveis do Aplicativo
-APP_NAME = 'Cadastrador maluco'
-APP_OWNER = 'Macaco'
+APP_NAME = 'Cadastro de Gente'
+APP_OWNER = 'Luferat'
 
+# URLs para retorno após login e logout
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'

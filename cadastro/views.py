@@ -1,17 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Pessoa
 from .forms import PessoaForm
 
 def index(request):
     pessoas = Pessoa.objects.all()
-    contexto = {
-        'pessoas': pessoas,
-    }
-    return render(request, 'cadastro/index.html', contexto)
+    return render(request, 'cadastro/index.html', {'pessoas': pessoas})
 
 def contato(request):
     return render(request, 'cadastro/contato.html')
 
+@login_required
 def adicionar(request):
     if request.method == 'POST':
         form = PessoaForm(request.POST)
@@ -22,10 +21,12 @@ def adicionar(request):
         form = PessoaForm()
     return render(request, 'cadastro/adicionar.html', {'form': form})
 
+@login_required
 def detalhe(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     return render(request, 'cadastro/detalhe.html', {'pessoa': pessoa})
 
+@login_required
 def editar(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     if request.method == 'POST':
@@ -37,6 +38,7 @@ def editar(request, id):
         form = PessoaForm(instance=pessoa)
     return render(request, 'cadastro/editar.html', {'form': form, 'pessoa': pessoa})
 
+@login_required
 def deletar(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     if request.method == 'POST':
