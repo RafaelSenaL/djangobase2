@@ -1,10 +1,6 @@
-# cadastro\context_processors.py
-
-from core import settings
-
+# cadastro/context_processors.py
 
 def global_context(request):
     return {
-        'dono': settings.APP_OWNER,
-        'sitename': settings.APP_NAME,
+        'dono': 'Joca da Silva',
     }
