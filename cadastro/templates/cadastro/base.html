@@ -33,13 +33,21 @@
 
     <hr>
 
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
     <main>
         {% block conteudo %}{% endblock %}
     </main>
 
     <hr>
-    <footer>
-        <p>&copy; 2026 {{ dono }}</p>
+     <footer>
+        <p>&copy; 2026 {{ dono | default:"Visitante" }}</p>
     </footer>
 
 </body>
