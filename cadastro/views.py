@@ -3,15 +3,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Pessoa
 from .forms import PessoaForm
+from .forms import ContatoForm
+
 
 
 def index(request):
     pessoas = Pessoa.objects.all()
     return render(request, 'cadastro/index.html', {'pessoas': pessoas})
 
-
+@login_required
 def contato(request):
-    return render(request, 'cadastro/contato.html')
+    form = ContatoForm()
+    return render(request, 'cadastro/contato.html', {'form': form})
 
 
 @login_required
@@ -55,3 +58,4 @@ def deletar(request, id):
         messages.success(request, 'Pessoa deletada com sucesso!')
         return redirect('index')
     return render(request, 'cadastro/deletar.html', {'pessoa': pessoa})
+

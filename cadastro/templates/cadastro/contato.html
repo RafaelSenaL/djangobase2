@@ -9,21 +9,15 @@
 <h2>Faça Contato</h2>
 <p>Preencha todos os campos para falar conosco</p>
 
-<form>
-    campos do form entram aqui
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <p class="mb-3">
+        {{ field.label_tag }}
+        {{ field }}
+    </p>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 
 {% endblock %}
-
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
-</head>
-<body>
-    <h1>Faça Contato!</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum minus dignissimos neque cumque ipsa similique, repellendus consectetur sunt commodi earum quis? Perferendis quam odit, doloribus minima ab fugit nobis. In.</p>
-</body>
-</html>
